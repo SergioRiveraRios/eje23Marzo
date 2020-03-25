@@ -12,11 +12,14 @@ export class Tab1Page {
   activities: Activity[] = [];
 
   constructor(private activiService: ActiviService,private router: Router) {
-    this.activities = this.activiService.getActivity();
+    this.clearTab();
   }
 
   changeStatus(pos: number) {
     this.activiService.changeStatus(pos);
+  }
+  clearTab():void{
+    this.activities = this.activiService.getActivity();
   }
   newActivity(): void {
     this.router.navigate(['/new-activity']);

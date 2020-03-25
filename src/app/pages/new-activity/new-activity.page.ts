@@ -28,11 +28,10 @@ export class NewActivityPage implements OnInit {
     this.submitted = true;
     if (this.myForm.valid) {
       this.service.newActivity({
-        name: this.myForm.get('name').value,
+        name: this.myForm.get('tarea').value,
         detail: this.myForm.get('detail').value,
-        status: false,
-        date:this.myForm.get('date').value
-
+        date:this.myForm.get('date').value,
+        status: true
       });
     }
   }
