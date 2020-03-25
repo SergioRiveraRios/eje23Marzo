@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Activity } from '../models/activity';
 import { ActiviService } from '../services/activi.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -10,11 +11,14 @@ import { ActiviService } from '../services/activi.service';
 export class Tab1Page {
   activities: Activity[] = [];
 
-  constructor(private activiService: ActiviService) {
+  constructor(private activiService: ActiviService,private router: Router) {
     this.activities = this.activiService.getActivity();
   }
 
   changeStatus(pos: number) {
     this.activiService.changeStatus(pos);
+  }
+  newActivity(): void {
+    this.router.navigate(['/new-activity']);
   }
 }

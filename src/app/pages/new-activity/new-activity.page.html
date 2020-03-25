@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nuevo</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form class="ion-padding" [formGroup]="myForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Tarea</ion-label>
+        <ion-input type="text" formControlName="tarea"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="myForm.get('tarea').errors && (myForm.get('tarea'
+      ).dirty || myForm.get('tarea').touched || submitted)">
+        <ion-label color="danger">Ingreso de tarea incorrecto</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Detalle</ion-label>
+        <ion-input type="text" formControlName="detail"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="myForm.get('detail').errors && (myForm.get('detail'
+      ).dirty || myForm.get('detail').touched || submitted)">
+        <ion-label color="danger">Ingreso de detalle incorrecto</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fecha</ion-label>
+        <ion-datetime value="2020-03-24" formControlName="date"></ion-datetime>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="saveActivity()" expand="block" shape="round">
+      Guardar
+    </ion-button>
+  </form>
+</ion-content>
