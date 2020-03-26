@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class Tab1Page {
   activities: Activity[] = [];
-
+  search: String;
   constructor(private activiService: ActiviService,private router: Router) {
     this.clearTab();
   }
@@ -23,5 +23,13 @@ export class Tab1Page {
   }
   newActivity(): void {
     this.router.navigate(['/new-activity']);
+  }
+  filter(): void{
+    this.clearTab();
+    if (this.search && this.search.trim()){
+      this.activities = this.activities.filter((activity)=> {
+        return (activity.name.toLocaleLowerCase().indexOf(this.search.toLocaleLowerCase()) > -1);
+      });
+    }
   }
 }

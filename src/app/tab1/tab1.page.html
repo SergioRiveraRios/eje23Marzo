@@ -8,13 +8,17 @@
 
 <ion-content [fullscreen]="true">
 
-
+  <ion-item>
+    <ion-label position="floating">Buscar Tarea</ion-label>
+    <ion-input type="text" [(ngModel)]="search" (keyup)="filter()"></ion-input>
+  </ion-item>
   <ion-list>
     <ion-list-header>
       <ion-label>
         <h2>Todas las tareas</h2>
       </ion-label>
     </ion-list-header>
+   
     <div *ngFor="let activity of activities; index as i">
       <ion-item-sliding (ionSwipe)="changeStatus(i)">
          <ion-item>
@@ -42,4 +46,5 @@
     </div>
   </ion-list>
   <ion-button expand="block" (click)="newActivity()">Agregar Actividad</ion-button>
+  
 </ion-content>
